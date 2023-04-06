@@ -5,7 +5,6 @@ APP-EXEC=$(DC) exec $(APP)
 BASH=/bin/bash
 SH=/bin/sh
 
-
 build-and-up:
 	@$(UP) --build --remove-orphans
 
