@@ -9,10 +9,10 @@ build-and-up:
 	@$(UP) --build --remove-orphans
 
 db-create-volume:
-	@$(RUN) docker volume create --name=postgres.data
+	@$(RUN) docker volume create --name=clickhouse.data
 
 db-remove-volume:
-	@$(RUN) docker volume rm postgres.data -f
+	@$(RUN) docker volume rm clickhouse.data -f
 
 copy-env:
 	@$(RUN) cp .env.dist .env 2>/dev/null

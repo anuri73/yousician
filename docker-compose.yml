@@ -4,7 +4,7 @@ networks:
   web-network:
 
 volumes:
-  postgres.data:
+  clickhouse.data:
     external: true
 
 services:
@@ -23,16 +23,17 @@ services:
       - web-network
 
   db:
-    build:
-      context: db
-      dockerfile: Dockerfile
-    tty: true
+    image: yandex/clickhouse-server
+    restart: always
+    ports:
+      - "8123:8123"
+      - "9000:9000"
     volumes:
-      - postgres.data:/var/lib/postgresql/data
-      - ./db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - clickhouse.data:/var/lib/clickhouse
     env_file:
       - .env
-    ports:
-      - '5432:5432'
+    environment:
+      - CLICKHOUSE_USER=${APP_USER}
+      - CLICKHOUSE_PASSWORD=${APP_PASSWORD}
     networks:
       - web-network
