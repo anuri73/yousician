@@ -1,3 +1,5 @@
+#!/bin/bash
+
 directory="/source/wwc"
 db=${SOURCE_DB}
 table="wwc"

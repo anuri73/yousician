@@ -20,10 +20,17 @@ db-remove-volume:
 copy-env:
 	@$(RUN) cp .env.dist .env 2>/dev/null
 
+import-source:
+	make import-wwc
+
+import-wwc:
+	$(IMPORT-EXEC) ./wwc.sh
+
 install:
 	make copy-env
 	make db-create-volume
 	make build-and-up
+	make import-source
 
 pull:
 	@$(DC) pull
