@@ -1,12 +1,15 @@
 DC=docker-compose
 UP=@$(DC) -f docker-compose.yml up -d
-APP=app
-APP-EXEC=$(DC) exec $(APP)
+IMPORT=import
+IMPORT-EXEC=$(DC) exec $(IMPORT)
 BASH=/bin/bash
 SH=/bin/sh
 
 build-and-up:
 	@$(UP) --build --remove-orphans
+
+dbt-sh:
+	$(DC) exec dbt $(BASH)
 
 db-create-volume:
 	@$(RUN) docker volume create --name=clickhouse.data
@@ -36,7 +39,7 @@ ps:
 	@$(DC) ps
 
 sh:
-	$(APP-EXEC) $(BASH)
+	$(IMPORT-EXEC) $(BASH)
 
 stop:
 	@$(DC) stop

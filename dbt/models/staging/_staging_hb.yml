@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: hb
+    description: HarmonicaBots
+    columns:
+      - name: id
+      - name: first_name
+      - name: last_name
+      - name: email
+      - name: gender
+      - name: ip_address
+      - name: dob
