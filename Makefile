@@ -22,9 +22,13 @@ copy-env:
 
 import-source:
 	make import-wwc
+	make import-hb
 
 import-wwc:
 	$(IMPORT-EXEC) ./wwc.sh
+
+import-hb:
+	$(IMPORT-EXEC) ./hb.sh
 
 install:
 	make copy-env

@@ -1,1 +1,1 @@
-FROM clickhouse/clickhouse-server:22.3
+FROM clickhouse/clickhouse-server
