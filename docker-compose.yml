@@ -8,32 +8,56 @@ volumes:
     external: true
 
 services:
-  app :
+  import:
     build:
-      context: app
+      context: import
       dockerfile: Dockerfile
-    container_name: app
-    volumes:
-      - ./app:/app
+    container_name: import
+    depends_on:
+      db:
+        condition: service_healthy
     env_file:
       - .env
-    depends_on:
-      - db
     networks:
       - web-network
+    volumes:
+      - ./import:/app
+      - ./source:/source
 
   db:
-    image: yandex/clickhouse-server
+    build:
+      context: db
+      dockerfile: Dockerfile
+    container_name: db
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8123/ping || exit 1
     restart: always
     ports:
       - "8123:8123"
       - "9000:9000"
     volumes:
       - clickhouse.data:/var/lib/clickhouse
+      - ./db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     env_file:
       - .env
     environment:
       - CLICKHOUSE_USER=${APP_USER}
       - CLICKHOUSE_PASSWORD=${APP_PASSWORD}
+    networks:
+      - web-network
+
+  dbt:
+    build:
+      context: dbt
+      dockerfile: Dockerfile
+    container_name: dbt
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    volumes:
+      - ./dbt:/app
+      - ./source:/source
     networks:
       - web-network

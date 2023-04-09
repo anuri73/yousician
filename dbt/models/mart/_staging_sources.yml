@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: yousican_stg
+    tables:
+      - name: stg_hb
+      - name: stg_wwc

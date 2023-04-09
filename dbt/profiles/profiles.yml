@@ -1,0 +1,19 @@
+yousican:
+  target: mart
+  outputs:
+    stg:
+      type: clickhouse
+      schema: "{{ env_var('STG_DB') }}"
+      host: db
+      port: 8123
+      user: "{{ env_var('APP_USER') }}"
+      password: "{{ env_var('APP_PASSWORD') }}"
+      secure: False
+    mart:
+      type: clickhouse
+      schema: "{{ env_var('MART_DB') }}"
+      host: db
+      port: 8123
+      user: "{{ env_var('APP_USER') }}"
+      password: "{{ env_var('APP_PASSWORD') }}"
+      secure: False
