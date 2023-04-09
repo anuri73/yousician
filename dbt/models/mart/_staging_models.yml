@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: gender_ratio
+    description: Gender ratio per ga,e
+    columns:
+      - name: game
+      - name: count_male
+      - name: count_female
+      - name: ratio
