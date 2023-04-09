@@ -36,11 +36,18 @@ install:
 	make build-and-up
 	make import-source
 
+ip-download:
+	$(DC) exec dbt python /app/custom/ip.py
+
 pull:
 	@$(DC) pull
 
 recreate:
 	@$(UP) --force-recreate
+
+reinstall:
+	make remove
+	make install
 
 remove:
 	@$(DC) down -v --rmi all --remove-orphans

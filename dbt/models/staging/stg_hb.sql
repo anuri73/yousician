@@ -7,5 +7,7 @@ SELECT src.first_name,
        src.email,
        src.gender,
        src.dob,
-       null
-FROM {{ source('yousican_src', 'hb') }} as src
+       ip.country
+FROM {{ source ('yousican_src', 'hb') }} as src
+LEFT JOIN {{ ref('ip_country') }} ip
+ON ip.ip_address = src.ip_address

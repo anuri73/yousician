@@ -1,14 +1,10 @@
-FROM python:3.8-alpine
+FROM python:3.8
 
 WORKDIR /app
 
 ADD requirements.txt requirements.txt
 
-RUN \
- apk add --no-cache bash  && \
- apk add --no-cache --virtual .build-deps libffi-dev musl-dev gcc && \
- python3 -m pip install -r requirements.txt --no-cache-dir && \
- apk --purge del .build-deps
+RUN python3 -m pip install -r requirements.txt --no-cache-dir
 
 # Install dbt dependencies (as specified in packages.yml file)
 # Build seeds, models and snapshots (and run tests wherever applicable)

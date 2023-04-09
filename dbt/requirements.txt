@@ -1,2 +1,4 @@
 dbt-core
 dbt-clickhouse
+pandas
+IPToCC
