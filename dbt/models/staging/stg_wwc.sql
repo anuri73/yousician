@@ -2,10 +2,10 @@
     schema='stg'
 ) }}
 
-SELECT wwc.name as first_name,
-       wwc.name as last_name,
-       wwc.email,
-       wwc.gender,
-       wwc.dob,
-       wwc.nat
-FROM {{ source ('yousican_src', 'wwc') }} as wwc
+SELECT name.first as first_name,
+       name.last  as last_name,
+       email,
+       gender,
+       dob,
+       nat
+FROM {{ source ('yousican_src', 'wwc') }}
