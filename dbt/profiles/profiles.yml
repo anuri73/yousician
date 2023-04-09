@@ -1,5 +1,5 @@
 yousican:
-  target: dev
+  target: mart
   outputs:
     stg:
       type: clickhouse

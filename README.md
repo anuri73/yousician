@@ -30,3 +30,6 @@ make install
 - Docker
 - DockerCompose
 - Unix (otherwise bash utility required)
+
+Future improvements:
+- Cron task to update ip list: https://github.com/sapics/ip-location-db

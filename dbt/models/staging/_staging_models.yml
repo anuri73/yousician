@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_hb
+    description: HarmonicaBots
+    columns:
+      - name: id
+      - name: first_name
+      - name: last_name
+      - name: email
+      - name: gender
+      - name: dob
+      - name: country
+  - name: stg_wwc
+    description: Wild Wild Chords
+    columns:
+      - name: first_name
+      - name: last_name
+      - name: email
+      - name: gender
+      - name: dob
+      - name: country

@@ -21,14 +21,14 @@ copy-env:
 	@$(RUN) cp .env.dist .env 2>/dev/null
 
 import-source:
-	make import-wwc
 	make import-hb
-
-import-wwc:
-	$(IMPORT-EXEC) ./wwc.sh
+	make import-wwc
 
 import-hb:
 	$(IMPORT-EXEC) ./hb.sh
+
+import-wwc:
+	$(IMPORT-EXEC) ./wwc.sh
 
 install:
 	make copy-env
