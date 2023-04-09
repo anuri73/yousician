@@ -8,3 +8,27 @@ models:
       - name: count_male
       - name: count_female
       - name: ratio
+  - name: hb_aggregations
+    description: HB game youngest and oldest players
+    columns:
+      - name: country
+      - name: youngest_dob
+      - name: youngest_first_name
+      - name: youngest_last_name
+      - name: youngest_email
+      - name: oldest_dob
+      - name: oldest_first_name
+      - name: oldest_last_name
+      - name: oldest_email
+  - name: wwc_aggregations
+    description: WWC game youngest and oldest players
+    columns:
+      - name: country
+      - name: youngest_dob
+      - name: youngest_first_name
+      - name: youngest_last_name
+      - name: youngest_email
+      - name: oldest_dob
+      - name: oldest_first_name
+      - name: oldest_last_name
+      - name: oldest_email
